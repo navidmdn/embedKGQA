@@ -1,3 +1,6 @@
+data/saved_models/*
+complex_graph_embedding/data/saved_models/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
