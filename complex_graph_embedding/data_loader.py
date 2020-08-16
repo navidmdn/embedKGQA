@@ -34,8 +34,8 @@ class KBManager:
         with open(config.RELATION_VOCABULARY_PATH, 'wb') as f:
             pickle.dump(self.relation_map, f)
 
-        print("relation vocabulary size: {}".format(len(self.relation_map)))
-        print("entity vocabulary size: {}".format(len(self.entity_map)))
+        # print("relation vocabulary size: {}".format(len(self.relation_map)))
+        # print("entity vocabulary size: {}".format(len(self.entity_map)))
 
     def load_er_vocab(self):
         """"
@@ -79,11 +79,11 @@ class DataLoader:
         train_raw_ds, test_raw_ds = train_test_split(raw_ds, test_size=config.TEST_SPLIT, shuffle=True)
         train_raw_ds, validation_raw_ds = train_test_split(train_raw_ds, test_size=config.VALIDATION_SPLIT)
 
-        print("train_size:{} test_size:{} validation_size:{}".format(
-            len(train_raw_ds),
-            len(test_raw_ds),
-            len(validation_raw_ds)
-        ))
+        # print("train_size:{} test_size:{} validation_size:{}".format(
+        #     len(train_raw_ds),
+        #     len(test_raw_ds),
+        #     len(validation_raw_ds)
+        # ))
 
         return np.array(train_raw_ds), np.array(test_raw_ds), np.array(validation_raw_ds)
 

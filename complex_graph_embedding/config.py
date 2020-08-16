@@ -1,6 +1,9 @@
-KB_PATH = './data/kb.txt'
-ENTITY_VOCABULARY_PATH = './data/entity_vocab.pickle'
-RELATION_VOCABULARY_PATH = './data/relation_vocab.pickle'
+from root_dir import ROOT_DIR
+import os
+
+KB_PATH = os.path.join(ROOT_DIR, 'data/kb.txt')
+ENTITY_VOCABULARY_PATH = os.path.join(ROOT_DIR, 'data/complex/entity_vocab.pickle')
+RELATION_VOCABULARY_PATH = os.path.join(ROOT_DIR, 'data/complex/relation_vocab.pickle')
 
 
 # training configs
@@ -16,7 +19,7 @@ LEARNING_RATE = 0.001
 
 # model configs
 HIDDEN_DIMENSION = 512
-SAVED_MODELS_PATH = 'data/saved_models'
+SAVED_MODELS_PATH = os.path.join(ROOT_DIR, 'data/complex/saved_models')
 
 # evaluation configs
 PREDICTION_THRESHOLD = 0.03

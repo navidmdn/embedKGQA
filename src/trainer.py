@@ -11,6 +11,7 @@ from complex_graph_embedding.data_loader import data_loader
 from complex_graph_embedding import config as kb_config
 from src.metaqa_loader import MetaQADataLoader
 
+
 class Trainer:
     def __init__(self, embedKGQA, kb_embedder, loss_fn, optimizer, train_data_loader, validation_data_loader,
                  epochs, target_dim, batch_size, model_name='default', log_iters=config.TRAIN_LOG_ITERATIONS,
@@ -117,7 +118,7 @@ if __name__ == '__main__':
         train_data_loader=train_data_loader,
         validation_data_loader=validation_data_loader,
         epochs=config.EPOCHS,
-        target_dim=config.TARGET_DIM,
+        target_dim=data_loader.target_dim,
         batch_size=config.BATCH_SIZE,
         model_name="embedkgqa",
     )
