@@ -120,7 +120,7 @@ if __name__ == '__main__':
         epochs=config.EPOCHS,
         target_dim=data_loader.target_dim,
         batch_size=config.BATCH_SIZE,
-        model_name="embedkgqa",
+        model_name="embedkgqa_local_gpu",
     )
 
     trainer.run()

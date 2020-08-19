@@ -16,11 +16,12 @@ class EmbedKGQA(keras.Model):
         question_complex = self.fc2(question_complex)
         question_complex = self.fc3(question_complex)
 
-        scores = self.graph_embedding_model.get_score(
-            q_entity_embeddings,
-            question_complex,
-            self.graph_embedding_model.entity_encoder
-        )
+        with tf.device('/CPU:0'):
+            scores = self.graph_embedding_model.get_score(
+                q_entity_embeddings,
+                question_complex,
+                self.graph_embedding_model.entity_encoder
+            )
 
         prediction = tf.sigmoid(scores)
         return prediction

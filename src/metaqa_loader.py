@@ -1,6 +1,7 @@
 from complex_graph_embedding import config as kb_config
 from transformers import RobertaTokenizer, TFRobertaModel
 
+import tensorflow as tf
 import random
 import re
 import os
@@ -34,8 +35,9 @@ class MetaQADataLoader:
 
     def set_contextual_embedder(self, contextual_embedder):
         if contextual_embedder == 'roberta':
-            self.tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
-            self.contextual_embedding_model = TFRobertaModel.from_pretrained('roberta-base')
+            with tf.device('/CPU:0'):
+                self.tokenizer = RobertaTokenizer.from_pretrained('roberta-base')
+                self.contextual_embedding_model = TFRobertaModel.from_pretrained('roberta-base')
         else:
             raise NotImplementedError()
 
@@ -81,8 +83,8 @@ class MetaQADataLoader:
                 return_tensors="tf",
                 padding=True
             )
-
-            q_embedds = self.contextual_embedding_model(tokens)
+            with tf.device('/CPU:0'):
+                q_embedds = self.contextual_embedding_model(tokens)
             q_embedds = q_embedds[0].numpy()[:, 0, :]
 
             entities = map(lambda qa: qa.question_entity, batch)
